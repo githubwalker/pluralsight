@@ -12,14 +12,13 @@
     <!-- 3.2.6.RELEASE -->
 
     <properties>
-        <spring.version>3.2.6.RELEASE</spring.version>
-        <!-- <spring.version>4.1.5.RELEASE</spring.version> -->
-        <!-- <spring.version>LATEST</spring.version> -->
+        <!-- <spring.version>3.2.6.RELEASE</spring.version> -->
+        <spring.version>LATEST</spring.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
         <jackson.version>1.9.13</jackson.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet>3.2.6</javax.servlet>
-
+        <fasterxml.version>LATEST</fasterxml.version> <!-- 2.5.1 -->
     </properties>
 
 
@@ -51,17 +50,20 @@
     	<artifactId>hibernate-validator</artifactId>
     	<version>4.2.0.Final</version>
     </dependency>
-    <dependency>
-    	<groupId>org.codehaus.jackson</groupId>
-    	<artifactId>jackson-mapper-asl</artifactId>
-    	<!-- <version>1.4.1</version> -->
-        <version>${jackson.version}</version>
-    </dependency>
-    <dependency>
-    	<groupId>com.thoughtworks.xstream</groupId>
-    	<artifactId>xstream</artifactId>
-    	<version>1.3.1</version>
-    </dependency>
+
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${fasterxml.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.thoughtworks.xstream</groupId>
+          <artifactId>xstream</artifactId>
+          <version>LATEST</version>
+      </dependency>
+
+
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-oxm</artifactId>
