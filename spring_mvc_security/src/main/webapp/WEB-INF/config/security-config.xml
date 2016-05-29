@@ -14,9 +14,18 @@
     </bean>
 
     <s:http auto-config="true">
-        <s:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <s:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
     </s:http>
 
+    <bean id="authProvider" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <property name="dataSource" ref="dataSourceJNDI" />
+    </bean>
+
+    <s:authentication-manager>
+        <s:authentication-provider user-service-ref="authProvider"/>
+    </s:authentication-manager>
+
+    <!--
     <s:authentication-manager>
         <s:authentication-provider>
             <s:user-service>
@@ -24,6 +33,7 @@
             </s:user-service>
         </s:authentication-provider>
     </s:authentication-manager>
+    -->
 
 </beans>
 
