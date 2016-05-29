@@ -21,9 +21,21 @@
         <property name="dataSource" ref="dataSourceJNDI" />
     </bean>
 
+    <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg value="12"></constructor-arg>
+    </bean>
+
     <s:authentication-manager>
-        <s:authentication-provider user-service-ref="authProvider"/>
+        <s:authentication-provider user-service-ref="authProvider" >
+            <s:password-encoder ref="encoder"/>
+        </s:authentication-provider>
     </s:authentication-manager>
+
+    <!--
+    bcrypt/12:
+    secret: $2a$12$Ud14J2t4cf/f.PJ6n.yjv.zzTjJCO7wHS3lM/s8bHPtLm0F5/nK.G
+    123: $2a$12$0zdTBkLYA6k.tR24lIXT4u0XWbAqqp5nX5EwpPleHuifNJm339O6m
+    -->
 
     <!--
     <s:authentication-manager>
