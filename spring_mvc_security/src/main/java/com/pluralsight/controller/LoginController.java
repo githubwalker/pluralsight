@@ -17,4 +17,12 @@ public class LoginController
         System.out.println("login triggered");
         return "login";
     }
+
+    @RequestMapping(value="/loginFailed", method = RequestMethod.GET)
+    public String loginFailed(ModelMap map)
+    {
+        System.out.println("login triggered");
+        map.addAttribute( "error", "true" );
+        return "login";
+    }
 }
