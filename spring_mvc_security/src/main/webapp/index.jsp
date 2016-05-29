@@ -1,9 +1,14 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   
   <head>
+
+    <c:set var="serverpath" scope="session" value="${pageContext.request.contextPath}"/>
+
     <meta charset="utf-8">
     <title>
     </title>
@@ -65,6 +70,22 @@
         <a class="btn btn-primary" href="addMinutes.html">
           Add Exercise Minutes »
         </a>
+
+        <c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+        <a class="btn btn-warning" href="${logoutUrl}" >
+          Logout »
+        </a>
+
+
+<!--
+        <form action="${logoutUrl}" method="POST">
+          <input type="submit" value="Logout »" />
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form >
+-->
+
+
       </div>
       <div>
       </div>

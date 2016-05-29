@@ -25,4 +25,12 @@ public class LoginController
         map.addAttribute( "error", "true" );
         return "login";
     }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(ModelMap map)
+    {
+        System.out.println("logout triggered");
+        return "logout";
+    }
 }
+

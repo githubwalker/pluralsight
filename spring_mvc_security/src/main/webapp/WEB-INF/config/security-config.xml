@@ -18,7 +18,12 @@
     <s:http auto-config="true">
         <s:intercept-url pattern="/login.html" access="permitAll" />
         <s:intercept-url pattern="/loginFailed.html" access="permitAll" />
+        <s:intercept-url pattern="/logout.html" access="permitAll" />
+        <s:intercept-url pattern="/j_spring_security_logout" access="permitAll" />
+
         <s:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+
         <s:form-login login-page="/login.html"
                       login-processing-url="/j_spring_security_check"
                       password-parameter="j_password"
@@ -26,6 +31,9 @@
                       authentication-failure-url="/loginFailed.html"
                       default-target-url="/greeting.html"
         />
+
+        <s:logout logout-success-url="/logout.html" logout-url="j_spring_security_logout" />
+
     </s:http>
 
 
