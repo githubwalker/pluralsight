@@ -9,13 +9,30 @@
 	http://www.springframework.org/schema/security/spring-security.xsd"
 >
 
+
     <bean id="dataSourceJNDI" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="java:comp/env/jdbc/Security"/>
     </bean>
 
+
+    <s:http auto-config="true">
+        <s:intercept-url pattern="/login.html" access="permitAll" />
+        <s:intercept-url pattern="/**" access="isAuthenticated()"/>
+        <s:form-login login-page="/login.html"
+                      login-processing-url="/j_spring_security_check"
+                      password-parameter="j_password"
+                      username-parameter="j_username"
+                      authentication-failure-url="/login.html?error"
+                      default-target-url="/greeting.html"
+        />
+    </s:http>
+
+
+<!--
     <s:http auto-config="true">
         <s:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
     </s:http>
+-->
 
     <bean id="authProvider" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
         <property name="dataSource" ref="dataSourceJNDI" />
