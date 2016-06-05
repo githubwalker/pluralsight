@@ -21,6 +21,7 @@
         <s:intercept-url pattern="/logout.html" access="permitAll" />
         <s:intercept-url pattern="/j_spring_security_logout" access="permitAll" />
 
+
         <s:intercept-url pattern="/**" access="isAuthenticated()"/>
 
 
@@ -32,7 +33,9 @@
                       default-target-url="/greeting.html"
         />
 
-        <s:logout logout-success-url="/logout.html" logout-url="j_spring_security_logout" />
+        <s:logout logout-url="/j_spring_security_logout" logout-success-url="/logout.html"/> <!-- logout-success-url="/logout.html"  -->
+
+        <s:csrf disabled="true" />
 
     </s:http>
 
@@ -76,3 +79,4 @@
 </beans>
 
 <!--        xmlns:security="http://www.springframework.org/schema/c" -->
+

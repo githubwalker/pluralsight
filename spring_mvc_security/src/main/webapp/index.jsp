@@ -8,6 +8,9 @@
   <head>
 
     <c:set var="serverpath" scope="session" value="${pageContext.request.contextPath}"/>
+    <c:set var="logoutUrl" scope="session" value="${serverpath}/j_spring_security_logout"/>
+
+
 
     <meta charset="utf-8">
     <title>
@@ -33,6 +36,24 @@
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
     <style>
     </style>
+
+    <script src="jquery-1.8.3.js">
+    </script>
+
+    <script src="assets/js/bootstrap.js">
+    </script>
+
+    <script src="helpers.js" >
+    </script>
+
+
+    <script>
+      var logoutTransitHelper = function() {
+          logoutPostHelper( "${logoutUrl}", "${_csrf.parameterName}", "${_csrf.token}"  );
+        }
+    </script>
+
+
   </head>
   <body>
     <div class="navbar navbar-fixed-top navbar-inverse">
@@ -71,30 +92,14 @@
           Add Exercise Minutes »
         </a>
 
-        <c:url value="/j_spring_security_logout" var="logoutUrl" />
-
-        <a class="btn btn-warning" href="${logoutUrl}" >
+        <a class="btn btn-warning" href="javascript:logoutTransitHelper()" >
           Logout »
         </a>
-
-
-<!--
-        <form action="${logoutUrl}" method="POST">
-          <input type="submit" value="Logout »" />
-          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form >
--->
-
 
       </div>
       <div>
       </div>
     </div>
     
-    <script src="jquery-1.8.3.js">
-    </script>
-    
-    <script src="assets/js/bootstrap.js">
-    </script>
   </body>
 </html>
