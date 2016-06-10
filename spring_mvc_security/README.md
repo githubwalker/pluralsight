@@ -73,8 +73,8 @@ add:
 	      type="javax.sql.DataSource"
 	      driverClassName="com.mysql.jdbc.Driver"
 	      url="jdbc:mysql://localhost:3306/fitness_tracker_security"
-	      username="root"
-	      password="170032"
+	      username="<user_goes_here>"
+	      password="<password_goes_here>"
 
 	      maxActive="100"
 	      maxIdle="20"
